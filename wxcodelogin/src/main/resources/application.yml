@@ -1,0 +1,11 @@
+spring:
+  thymeleaf:
+    cache: false
+wx:
+  appId: wxb7ca6048ec426f03
+  appSecret: d29708209e6e4707431bbd8cd314396e
+  server: http://rn5caz.natappfree.cc
+  qrCodeUrl: https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN
+  tokenUrl: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=SECRET
+  openIdUrl: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=SECRET
+  userInfoUrl: https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN

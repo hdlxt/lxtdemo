@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!--引入jq-->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body style="text-align: center;margin-top: 100px;">
+
+<h1>微信扫码登录方式一</h1>
+
+    <button onclick="getQrCode()" style="width: 100px;height: 50px;">获取二维码</button>
+
+    <br>
+
+    <img src="" id="qrCodeImgId"  style="width: 300px;height: 300px;display: none">
+<hr>
+<h1>微信扫码登录方式二</h1>
+<button onclick="toQrCode()" style="width: 100px;height: 50px;">获取二维码</button>
+<script>
+    //======================================微信扫码登录方式一=========================================================
+    // 存储二维码标识,用于验证是否扫码成功
+    var sceneStr;
+    var t;
+    // 获取登录二维码
+    function getQrCode(){
+        $.get('qrCodeFirstLogin/getQrCode',function (data) {
+            console.log("=============getQrCode=======================");
+            console.log(data);
+            if(data.code == 200){
+                sceneStr = data.data.sceneStr;
+                $('#qrCodeImgId').attr('src',"https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+data.data.ticket);
+                $('#qrCodeImgId').show();
+                t = window.setInterval(getOpenId,3000);
+            }else{
+                alert(data.msg);
+            }
+
+        });
+    }
+    // 扫码成功，获取用户openId=>为获取用户信息做准备
+    function getOpenId() {
+        $.get("qrCodeFirstLogin/getOpenId",{
+            "eventKey":sceneStr
+        },function (data) {
+            if(data.code == 200){
+                console.log("========getOpenId==========");
+                console.log(data.data);
+                window.clearInterval(t);
+                alert("登录成功openId："+data.data.openId);
+                /**
+                 * 1、第一次扫码登录进行账号绑定
+                 * 2、以后根据openId获取用户信息
+                 */
+            }
+        });
+    }
+    //======================================微信扫码登录方式二=========================================================
+    var appId = "[[${wxConfig.appId}]]";
+    var redirectUri = "[[${redirectUrl}]]";
+    var wxCodeUrl = "https://open.weixin.qq.com/connect/qrconnect?appid="+appId +
+        "&redirect_uri=" +redirectUri+
+        "&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect";
+    function toQrCode() {
+        window.location.href = wxCodeUrl;
+    }
+</script>
+</body>
+</html>
