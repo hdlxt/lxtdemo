@@ -63,6 +63,7 @@
         "&redirect_uri=" +redirectUri+
         "&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect";
     function toQrCode() {
+        alert("提示：需用通过开发者资质认证的微信开放平台账号！");
         window.location.href = wxCodeUrl;
     }
 </script>

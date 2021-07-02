@@ -122,7 +122,6 @@ public class QrCodeLoginFirstController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("callback")
     public JSONObject callback(HttpServletRequest request) throws Exception{
         log.info("===========>callback");
         //request中有相应的信息，进行解析

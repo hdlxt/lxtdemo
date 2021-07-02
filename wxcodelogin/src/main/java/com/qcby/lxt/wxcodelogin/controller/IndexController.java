@@ -1,7 +1,6 @@
 package com.qcby.lxt.wxcodelogin.controller;
 
 import com.qcby.lxt.wxcodelogin.properties.WxConfig;
-import org.apache.commons.codec.net.URLCodec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
