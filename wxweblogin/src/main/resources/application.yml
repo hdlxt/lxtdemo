@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    cache: false #关闭缓存
+wx:
+  appId: wxb7ca6048ec426f03
+  appSecret: d29708209e6e4707431bbd8cd314396e
+  server: http://gfqqgh.natappfree.cc

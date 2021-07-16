@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>微信授权登录示例</title>
+    <script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body style="text-align: center;">
+    <input type="button" style="width: 200px;height: 50px;margin-top: 100px;" value="微信网页授权登录" onclick="webAuthLogin()"/>
+    <hr/>
+<script th:inline="javascript">
+    var sceneStr;
+    var t;
+    var userInfo = [[${session.userInfo}]];
+    console.log("======用户信息  开始=========");
+    console.log(userInfo);
+    if(userInfo != null){
+        alert("您好："+userInfo.nickname);
+    }
+    console.log("======用户信息  结束=========");
+    function webAuthLogin() {
+        var appId = [[${wxConfig.appId}]];
+        var openId = [[${session.openId}]];
+        var redirectUri = [[${redirectUri}]];
+        if (openId == null) {
+            window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appId +
+                '&redirect_uri='+redirectUri +
+                '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+        }else{
+            alert("您好："+userInfo.nickname+"，已经授权成功！");
+        }
+    }
+</script>
+</body>
+</html>

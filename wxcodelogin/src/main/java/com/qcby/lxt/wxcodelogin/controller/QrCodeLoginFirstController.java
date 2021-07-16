@@ -61,8 +61,6 @@ public class QrCodeLoginFirstController {
             return ResultJson.error(e.getMessage());
         }
     }
-
-
     /**
      *  获取accessToken
      * @return
@@ -142,8 +140,8 @@ public class QrCodeLoginFirstController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code","200");
         if(messageType.equals("event")){
-            //先根据openid从数据库查询  => 从自己数据库中查取用户信息
             jsonObject = null;
+            //先根据openid从数据库查询  => 从自己数据库中查取用户信息 => jsonObject
             if(messageEvent.equals("SCAN")){
                 //扫描二维码
                 //return "欢迎回来";
@@ -160,7 +158,11 @@ public class QrCodeLoginFirstController {
                         "&lang=zh_CN";
                 String result = HttpClientUtil.doGet(url);
                 jsonObject = JSONObject.parseObject(result);
+                /**
+                 * 用户信息处理....
+                 */
             }
+            // 扫码成功，存入缓存
             loginMap.put(eventKey,new CodeLoginKey(eventKey,fromUser));
             return jsonObject;
         }
