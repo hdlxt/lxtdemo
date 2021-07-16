@@ -4,7 +4,7 @@ package com.qcby.wx.authlogin.web;
  * @ClassName ResultCode
  * @Description TODO
  * @Author lxt
- * @Date 2021/7/16 11:08
+ * @Date 2021/7/16 11:18
  */
 public enum ResultCode {
     /*

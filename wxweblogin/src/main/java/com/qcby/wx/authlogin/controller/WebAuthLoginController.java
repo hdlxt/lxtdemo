@@ -19,6 +19,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("webAuthLogin")
 public class WebAuthLoginController {
+
+
     //获取openid和access_token的连接
     private static String getOpenId = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=APPSECRET&code=CODE&grant_type=authorization_code";
     //获取用户基本信息的连接

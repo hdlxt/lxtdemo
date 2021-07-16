@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @ClassName WxConfig
  * @Description TODO
  * @Author lxt
- * @Date 2021/7/16 11:08
+ * @Date 2021/7/16 11:18
  */
 @Component
 @ConfigurationProperties(prefix = "wx")
