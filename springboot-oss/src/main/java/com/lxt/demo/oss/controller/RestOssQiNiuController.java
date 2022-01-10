@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("qiniu")
-public class OssQiNiuController {
+public class RestOssQiNiuController {
     @Autowired
     private OssQiNiuHelper ossQiNiuHelper;
 

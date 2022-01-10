@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传下载测试</title>
+    <script type="text/javascript" src="jquery1.9.1.min.js"></script>
+</head>
+<body>
+    <h1>七牛Oss</h1>
+    <h3>文件上传测试</h3>
+    <form action="/qiniu/upload" method="post" enctype="multipart/form-data" target="_blank">
+        <input type="file" name="file">
+        <input type="submit" value="上传"/>
+        <br/>
+
+    </form>
+
+    <h3>文件下载测试</h3>
+    <input type="text" id="imgText" style="width: 500px;"/>
+    <input type="button" placeholder="请输入filekey"  onclick="qiNiuImg()" value="测试"/>
+    <br/>
+    <img id="img"/>
+    <hr/>
+<script>
+    function qiNiuImg(){
+        $('#img').attr('src',"qiniu/private/file/"+$('#imgText').val());
+    }
+</script>
+</body>
+</html>
