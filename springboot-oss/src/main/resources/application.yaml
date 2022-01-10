@@ -1,9 +1,9 @@
 oss:
   qiniu:
-    accessKey: dnSco3vS45TMpps2Gdr1ZXm6F5BjNO_IYHx_L1wi
-    secretKey: bYXOTpnnMLCR5uwH421oG85e4BATuL4HzpxCkuax
-    bucketName: hdlxt
-    domain: r5g8e3jls.hb-bkt.clouddn.com
+    accessKey:
+    secretKey:
+    bucketName:
+    domain:
 spring:
   thymeleaf:
     cache: false
