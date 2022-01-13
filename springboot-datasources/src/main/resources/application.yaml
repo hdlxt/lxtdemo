@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master，如果读者只是单数据源只需要注释掉slave相关配置即可，这里为了方便演示master与slave保持相同
+      datasource:
+        master:
+          url: jdbc:mysql://localhost:3306/data_master?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false  # serverTimezone=Hongkong 需要填上时区
+          username: root
+          password: 12345678
+          driverClassName:  com.mysql.cj.jdbc.Driver
+        slave1:
+          url: jdbc:mysql://localhost:3306/data_slave1?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false  # serverTimezone=Hongkong 需要填上时区
+          username: root
+          password: 12345678
+          driverClassName:  com.mysql.cj.jdbc.Driver
+      initial-size: 10 # 以下是连接池配置
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: druid
+        login-password: 123456
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+#mybatis plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  check-config-location: true
+  configuration:
+    #全局地开启或关闭配置文件中的所有映射器已经配置的任何缓存
+    cache-enabled: false
+    call-setters-on-nulls: true
+    #配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: 'null'
+    #MyBatis 自动映射时未知列或未知属性处理策略 NONE：不做任何处理 (默认值), WARNING：以日志的形式打印相关警告信息, FAILING：当作映射失败处理，并抛出异常和详细信息
+    auto-mapping-unknown-column-behavior: warning
+  global-config:
+    banner: false
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"未设置主键类型",2:"用户输入ID (该类型可以通过自己注册自动填充插件进行填充)", 3:"全局唯一ID (idWorker), 4:全局唯一ID (UUID), 5:字符串全局唯一ID (idWorker 的字符串表示)";
+      id-type: auto
+
