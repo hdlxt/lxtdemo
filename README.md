@@ -10,4 +10,7 @@
 - Springboot-oss
   - 七牛云oss集成
 
+- Springboot-datasources
+  - mybatis-plus多数据源
+
 
