@@ -8,6 +8,8 @@ import com.lxt.springbootdatasources.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.*;
+
 @Service
 @DS("slave1")
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
@@ -23,5 +25,8 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         Role role1 = new Role();
         role1.setName("role2");
         this.baseMapper.insert(role1);
+
+        PriorityQueue<List<Integer>> queue = new PriorityQueue<>((a, b)-> a.get(0) + a.get(1) - b.get(0) - b.get(1));
     }
+
 }

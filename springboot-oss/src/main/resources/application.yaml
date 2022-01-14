@@ -1,9 +1,13 @@
 oss:
   qiniu:
-    accessKey:
-    secretKey:
-    bucketName:
-    domain:
+    accessKey: dnSco3vS45TMpps2Gdr1ZXm6F5BjNO_IYHx_L1wi
+    secretKey: bYXOTpnnMLCR5uwH421oG85e4BATuL4HzpxCkuax
+    bucketName: hdlxt
+    domain: r5g8e3jls.hb-bkt.clouddn.com
 spring:
   thymeleaf:
     cache: false
+  servlet:
+    multipart:
+      max-request-size: 100MB #最大请求文件的大小
+      max-file-size: 20MB #设置单个文件最大长度
