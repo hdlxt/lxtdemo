@@ -1,0 +1,11 @@
+- 官方文档：https://developer.qiniu.com/kodo/1239/java
+- 博客参考：https://blog.csdn.net/weixin_43272781/article/details/107673972
+- 步骤
+    - 注册账号
+    - 个人实名认证
+    - 开通对象云存储
+    - 创建空间
+    - 参考文档对接
+- 测试
+    - 配置文件oss中替换成自己id
+    - index.html页面测试
