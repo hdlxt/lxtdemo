@@ -1,0 +1,27 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: master,slave,slave1                                   # 数据源名字
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource        # 连接池
+        url: jdbc:mysql://127.0.0.1:3307/test               # 主库地址
+        username: root                                      # 主库用户名
+        password: root                                    # 主库密码
+      slave:
+        type: com.alibaba.druid.pool.DruidDataSource        # 连接池
+        url: jdbc:mysql://127.0.0.1:3308/test               # 从库地址
+        username: root
+        password: root
+      slave1:
+        type: com.alibaba.druid.pool.DruidDataSource        # 连接池
+        url: jdbc:mysql://127.0.0.1:3309/test               # 从库地址
+        username: root
+        password: root
+    masterslave:
+      load-balance-algorithm-type: round_robin              # 负载均衡算法，
+      name: ms
+      master-data-source-name: master                       # 主库数据源名字
+      slave-data-source-names: slave,slave1                        # 从库数据源名字
+    props:
+      sql:
+        show: true                                          # 打印SQL
