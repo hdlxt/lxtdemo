@@ -1,0 +1,18 @@
+spring:
+  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+    addresses: 127.0.0.1:5672,127.0.0.1:5673,127.0.0.1:5674
+    #    虚拟主机
+    virtual-host: /
+    #    开启发送端抵达队列确认【发送端确认机制+本地事务表】
+    publisher-returns: true
+    #    开启发送确认【发送端确认机制+本地事务表】
+    publisher-confirm-type: correlated
+    #    只要抵达队列，优先回调return confirm
+    template:
+      mandatory: true
+    #    使用手动确认模式，关闭自动确认【消息丢失】
+    listener:
+      simple:
+        acknowledge-mode: manual

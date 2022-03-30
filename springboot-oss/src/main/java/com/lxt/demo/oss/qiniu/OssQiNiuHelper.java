@@ -72,7 +72,7 @@ public class OssQiNiuHelper {
      * @throws IOException
      */
     public DefaultPutRet upload(InputStream inputStream, String fileKey) throws IOException {
-        Response res = uploadManager .put(inputStream, fileKey, getUpToken(fileKey),null,null);
+        Response res = uploadManager.put(inputStream, fileKey, getUpToken(fileKey),null,null);
         // 解析上传成功的结果
         DefaultPutRet putRet = gson.fromJson(res.bodyString(), DefaultPutRet.class);
         System.out.println(putRet.key);

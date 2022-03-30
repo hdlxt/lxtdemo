@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://127.0.0.1:3307/test
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+    slave1:
+      jdbc-url: jdbc:mysql://127.0.0.1:3308/test
+      username: root # 只读账户
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+    slave2:
+      jdbc-url: jdbc:mysql://192.168.102.36:3309/test
+      username: root # 只读账户
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver

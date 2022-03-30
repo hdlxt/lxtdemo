@@ -45,6 +45,7 @@ public class RestOssQiNiuController {
             //默认不指定key的情况下，以文件内容的hash值作为文件名
             String fileKey = UUID.randomUUID().toString().replace("-", "") + "-" + yyyyMMddHHmmss + fileExtend;
             Map<String, Object> map = new HashMap<>();
+            // 真正执行上传业务的代码  ，其他的是辅助
             DefaultPutRet uploadInfo = ossQiNiuHelper.upload(fileInputStream, fileKey);
             map.put("fileName", uploadInfo.key);
             map.put("originName", originalFilename);
